@@ -1,0 +1,22 @@
+server:
+  port: ${SERVER_PORT:8081}
+
+spring:
+  application:
+    name: auth-service
+  r2dbc:
+    url: r2dbc:pool:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:auth_db}
+    username: ${DB_USER:auth_user}
+    password: ${DB_PASSWORD:auth_pass}
+  main:
+    web-application-type: reactive
+
+security:
+  jwt:
+    secret: ${JWT_SECRET:super-secret-key-change-in-production-super-secret-key}
+    expiration-seconds: ${JWT_EXPIRATION_SECONDS:3600}
+
+  bootstrap:
+    admin:
+      username: ${ADMIN_USERNAME:admin}
+      password: ${ADMIN_PASSWORD:admin123}
