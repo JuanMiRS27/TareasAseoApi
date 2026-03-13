@@ -39,7 +39,9 @@ services:
   auth-service:
     build:
       context: .
-      dockerfile: auth-service/Dockerfile
+      dockerfile: Dockerfile
+      args:
+        SERVICE_MODULE: auth-service
     container_name: tareas-auth-service
     environment:
       SERVER_PORT: 8081
@@ -61,7 +63,9 @@ services:
   task-service:
     build:
       context: .
-      dockerfile: task-service/Dockerfile
+      dockerfile: Dockerfile
+      args:
+        SERVICE_MODULE: task-service
     container_name: tareas-task-service
     environment:
       SERVER_PORT: 8082

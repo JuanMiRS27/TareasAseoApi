@@ -4,7 +4,9 @@ steps:
     args:
       - build
       - -f
-      - auth-service/Dockerfile
+      - Dockerfile
+      - --build-arg
+      - SERVICE_MODULE=auth-service
       - -t
       - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_AUTH_IMAGE}:$COMMIT_SHA
       - .
@@ -36,7 +38,9 @@ steps:
     args:
       - build
       - -f
-      - task-service/Dockerfile
+      - Dockerfile
+      - --build-arg
+      - SERVICE_MODULE=task-service
       - -t
       - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_TASK_IMAGE}:$COMMIT_SHA
       - .

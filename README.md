@@ -4,6 +4,7 @@ Backend reactivo con arquitectura hexagonal compuesto por dos servicios Spring B
 
 - `auth-service`: autenticacion JWT y gestion de usuarios sobre MySQL.
 - `task-service`: gestion de tareas sobre PostgreSQL.
+- `Dockerfile` raiz unico para construir cualquiera de los dos servicios con `SERVICE_MODULE`.
 
 ## Ejecucion local
 
@@ -17,6 +18,13 @@ Servicios locales:
 
 - `auth-service`: `http://localhost:8081`
 - `task-service`: `http://localhost:8082`
+
+Build manual de imagenes:
+
+```bash
+docker build -f Dockerfile --build-arg SERVICE_MODULE=auth-service -t auth-service .
+docker build -f Dockerfile --build-arg SERVICE_MODULE=task-service -t task-service .
+```
 
 ## Despliegue en Google Cloud
 
