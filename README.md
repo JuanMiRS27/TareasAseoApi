@@ -26,6 +26,8 @@ docker build -f Dockerfile --build-arg SERVICE_MODULE=auth-service -t auth-servi
 docker build -f Dockerfile --build-arg SERVICE_MODULE=task-service -t task-service .
 ```
 
+Si usas un trigger de Cloud Build conectado a GitHub, no debe estar configurado en modo "Dockerfile" directo, porque ese modo no esta pasando `SERVICE_MODULE`. Debe usar `cloudbuild.yaml`.
+
 ## Despliegue en Google Cloud
 
 El repositorio quedo preparado para desplegar ambos servicios en Cloud Run usando:
