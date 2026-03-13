@@ -29,6 +29,7 @@ public class SecurityConfig {
                                 securityErrorWriter.write(exchange, HttpStatus.FORBIDDEN, "FORBIDDEN", "access denied"))
                 )
                 .authorizeExchange(exchange -> exchange
+                        .pathMatchers("/actuator/health", "/actuator/health/**").permitAll()
                         .pathMatchers("/auth/**").permitAll()
                         .pathMatchers(HttpMethod.GET, "/users/**").hasRole("ADMIN")
                         .anyExchange().authenticated()
